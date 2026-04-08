@@ -14,12 +14,14 @@
 ---
 
 🇬🇧 **English:** A curated collection of productivity scripts and add-ins for Autodesk Fusion 360, developed by MODINGE for mechanical designers and engineers.
+
 🇪🇸 **Español:** Una colección de scripts y complementos de productividad para Autodesk Fusion 360, desarrollados por MODINGE para diseñadores e ingenieros mecánicos.
 
 ## 🛠️ Catalog of Scripts / Catálogo de Herramientas
 
 ### 1. Modinge Fusion 360 Exporter
 🇬🇧 **ENG:** Export your entire root design or individual bodies into multiple formats (.stl, .step, .f3d, etc.) automatically into organized folders.
+
 🇪🇸 **ESP:** Exporta tu diseño raíz completo o cuerpos individuales en múltiples formatos (.stl, .step, .f3d, etc.) automáticamente en carpetas organizadas.
 
 ---
@@ -34,6 +36,8 @@
 5. Select the **Scripts** tab and click the green **[+]** icon next to "My Scripts".
 6. Navigate to the extracted folder and select the specific script folder (e.g., `ModingeFusion360Exporter`).
 7. Click **Run** to use it!
+
+<br>
 
 🇪🇸 **INSTRUCCIONES EN ESPAÑOL**
 1. Ve a la sección **Releases** en la parte derecha de esta página.
