@@ -46,5 +46,5 @@
 
 ---
 <div align="center">
-  <i>Developed by Ing. Rangel Díaz Savín | MODINGE</i>
+  <i>Developed by Ing. Rangel Díaz Savón | MODINGE</i>
 </div>
