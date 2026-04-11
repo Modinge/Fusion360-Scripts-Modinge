@@ -24,6 +24,11 @@
 
 🇪🇸 **ESP:** Exporta tu diseño raíz completo o cuerpos individuales en múltiples formatos (.stl, .step, .f3d, etc.) automáticamente en carpetas organizadas.
 
+### 2. ModingeFusion360-ParameterManagerCSVExporter
+🇬🇧 **ENG:** A script that exports all parameters (name, value, equation) to an Excel file (.csv). The designer comfortably edits them in Excel, and another script button imports them back into Fusion, updating the entire model.
+
+🇪🇸 **ESP:** Un script que exporta todos los parámetros (nombre, valor, ecuación) a un archivo de Excel (.csv). El diseñador los edita cómodamente en Excel, y otro botón del script los importa de vuelta a Fusion actualizando todo el modelo.
+
 ---
 
 ## ⚙️ How to Install / Cómo Instalar

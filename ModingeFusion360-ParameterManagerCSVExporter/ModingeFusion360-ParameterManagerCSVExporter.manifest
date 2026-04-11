@@ -1,0 +1,12 @@
+{
+	"autodeskProduct":	"Fusion",
+	"type":	"script",
+	"author":	"Rangel",
+	"description":	{
+		"":	"Un script que exporta todos los parámetros (nombre, valor, ecuación) a un archivo de Excel (.csv). El diseñador los edita cómodamente en Excel, y otro botón del script los importa de vuelta a Fusion actualizando todo el modelo"
+	},
+	"version":	"",
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true,
+	"iconFilename":	"ScriptIcon.svg"
+}
