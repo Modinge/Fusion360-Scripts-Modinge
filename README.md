@@ -53,6 +53,12 @@
 6. Navega hasta la carpeta extraída y selecciona la carpeta específica del script (ej. `ModingeFusion360Exporter`).
 7. Haz clic en **Ejecutar** para usarlo.
 
+## 🚀 What's New in the Latest Update
+
+* **New text fields (Suffix and Date):** You can now add a custom suffix and the current date directly from the UI. These will be automatically applied to your exported file names.
+* **Lightning-fast exports:** Folder creation logic has been optimized. Format-specific folders are now generated only once at the beginning of the process, drastically reducing total export time, especially for multi-body assemblies.
+* **Smart organization:** Files maintain the `BaseName + Suffix + Date` structure and are neatly saved within their respective format folders (`STL`, `STEP`, `3MF`, etc.).
+
 ## 🚀 Novedades de la última actualización
 
 * **Nuevos campos de texto (Sufijo y Fecha):** Ahora puedes añadir un sufijo personalizado y la fecha actual directamente desde la interfaz. Estos se aplicarán automáticamente a los nombres de tus archivos exportados.
