@@ -1,4 +1,5 @@
 import adsk.core, adsk.fusion, traceback, os, pathlib, webbrowser
+from datetime import datetime
 
 # Global list to keep event handlers active
 handlers = []
@@ -27,7 +28,7 @@ def run(context):
                     cmd = args.command
                     inputs = cmd.commandInputs
 
-                    # MODINGE Logo
+                    # MODINGE Logo (TU CÓDIGO ORIGINAL INTACTO)
                     script_dir = os.path.dirname(os.path.realpath(__file__))
                     logo_path = os.path.join(script_dir, 'recursos', 'MODINGE-logo-19.png')
                     logo_uri = pathlib.Path(logo_path).as_uri()
@@ -42,6 +43,13 @@ def run(context):
                     
                     default_name = design.parentDocument.name if design.parentDocument else 'Export'
                     inputs.addStringValueInput('base_name', 'Base name:', default_name)
+
+                    # --- NUEVOS CAMPOS: Sufijo y Fecha ---
+                    inputs.addStringValueInput('txt_suffix', 'Sufijo:', '')
+                    
+                    current_date = datetime.now().strftime("%d-%m-%Y")
+                    inputs.addStringValueInput('txt_date', 'Fecha:', current_date)
+                    # ------------------------------------
 
                     btn_browse = inputs.addBoolValueInput('btn_browse', 'Location:', False, '', False)
                     btn_browse.text = '📂 Browse Folder...'
@@ -109,6 +117,8 @@ def run(context):
                 try:
                     inputs = args.command.commandInputs
                     base_name = inputs.itemById('base_name').value
+                    suffix = inputs.itemById('txt_suffix').value
+                    date_val = inputs.itemById('txt_date').value
                     dest_path = inputs.itemById('txt_path').value
 
                     if dest_path == 'Select a folder...' or not os.path.exists(dest_path):
@@ -137,25 +147,52 @@ def run(context):
 
                     exportMgr = design.exportManager
 
+                    # --- OPTIMIZACIÓN: Crear el sufijo y las carpetas globales UNA SOLA VEZ ---
+                    global_suffix = ""
+                    if suffix: global_suffix += f" {suffix}"
+                    if date_val: global_suffix += f" -{date_val}"
+
+                    global_folder_name = f"{base_name}{global_suffix}"
+                    
+                    folder_paths = {}
+                    for ext in formats_to_process:
+                        # Limpia el punto del formato (ej: '.stl' -> 'STL')
+                        clean_ext = ext.replace('.', '').upper()
+                        folder_ext_name = f"{clean_ext} - {global_folder_name}"
+                        path_dir = os.path.join(dest_path, folder_ext_name)
+                        
+                        if not os.path.exists(path_dir):
+                            os.makedirs(path_dir)
+                            
+                        folder_paths[ext] = path_dir
+
                     def run_export(entity, final_name, is_body):
+                        # Aplica el sufijo al nombre del archivo exportado
+                        file_name = f"{final_name}{global_suffix}"
+                        
                         for ext in formats_to_process:
-                            folder_name = f"{ext.upper()} - {base_name}"
-                            path_dir = os.path.join(dest_path, folder_name)
-                            if not os.path.exists(path_dir): os.makedirs(path_dir)
-                            full_path = os.path.join(path_dir, f"{final_name}{ext}")
+                            # Evitar exportar f3d de cuerpos individuales para que no lance error interno
+                            if ext == '.f3d' and is_body: 
+                                continue
+                                
+                            full_path = os.path.join(folder_paths[ext], f"{file_name}{ext}")
+                            
                             try:
                                 if ext == '.stl': opts = exportMgr.createSTLExportOptions(entity, full_path)
                                 elif ext == '.3mf': opts = exportMgr.createC3MFExportOptions(entity, full_path)
-                                elif ext == '.f3d':
-                                    if is_body: continue
-                                    opts = exportMgr.createFusionArchiveExportOptions(full_path)
+                                elif ext == '.f3d': opts = exportMgr.createFusionArchiveExportOptions(full_path)
                                 elif ext == '.step': opts = exportMgr.createSTEPExportOptions(full_path)
                                 elif ext == '.iges': opts = exportMgr.createIGESExportOptions(full_path)
+                                
                                 exportMgr.execute(opts)
-                                adsk.doEvents()
-                            except: continue
+                                # Quitamos el adsk.doEvents() para que la exportación sea lo más rápida posible
+                            except: 
+                                continue
 
+                    # 1. Exportar Raíz si está marcado
                     if exp_root: run_export(design.rootComponent, base_name, False)
+                    
+                    # 2. Exportar Cuerpos si está marcado
                     if exp_bodies:
                         for comp in design.allComponents:
                             occurrences = design.rootComponent.allOccurrencesByComponent(comp)
@@ -189,7 +226,7 @@ def run(context):
     except:
         if ui: ui.messageBox('Error:\n{}'.format(traceback.format_exc()))
 
-# --- NEW FUNCTION: FINAL SUCCESS WINDOW ---
+# --- TU FUNCIÓN FINAL ORIGINAL INTACTA ---
 def show_success_dialog(ui):
     try:
         cmdDefFinal = ui.commandDefinitions.itemById('ModingeFusion360Exporter_Final')
