@@ -53,6 +53,11 @@
 6. Navega hasta la carpeta extraída y selecciona la carpeta específica del script (ej. `ModingeFusion360Exporter`).
 7. Haz clic en **Ejecutar** para usarlo.
 
+## 🚀 Novedades de la última actualización
+
+* **Nuevos campos de texto (Sufijo y Fecha):** Ahora puedes añadir un sufijo personalizado y la fecha actual directamente desde la interfaz. Estos se aplicarán automáticamente a los nombres de tus archivos exportados.
+* **Exportación ultra rápida:** Se optimizó la lógica de creación de carpetas. Ahora las carpetas por formato se generan una sola vez al inicio del proceso, lo que reduce drásticamente el tiempo total de exportación, especialmente en ensamblajes con muchos cuerpos.
+* **Organización inteligente:** Los archivos mantienen la estructura `NombreBase + Sufijo + Fecha` y se guardan de forma limpia dentro de sus respectivas carpetas por formato (`STL`, `STEP`, `3MF`, etc.).
 ---
 <div align="center">
   <i>Developed by Ing. Rangel Díaz Savón | MODINGE</i>
