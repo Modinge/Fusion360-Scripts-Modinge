@@ -59,11 +59,27 @@
 * **Lightning-fast exports:** Folder creation logic has been optimized. Format-specific folders are now generated only once at the beginning of the process, drastically reducing total export time, especially for multi-body assemblies.
 * **Smart organization:** Files maintain the `BaseName + Suffix + Date` structure and are neatly saved within their respective format folders (`STL`, `STEP`, `3MF`, etc.).
 
-## 🚀 Novedades de la última actualización
+## 🚀 Novedades 
 
 * **Nuevos campos de texto (Sufijo y Fecha):** Ahora puedes añadir un sufijo personalizado y la fecha actual directamente desde la interfaz. Estos se aplicarán automáticamente a los nombres de tus archivos exportados.
 * **Exportación ultra rápida:** Se optimizó la lógica de creación de carpetas. Ahora las carpetas por formato se generan una sola vez al inicio del proceso, lo que reduce drásticamente el tiempo total de exportación, especialmente en ensamblajes con muchos cuerpos.
 * **Organización inteligente:** Los archivos mantienen la estructura `NombreBase + Sufijo + Fecha` y se guardan de forma limpia dentro de sus respectivas carpetas por formato (`STL`, `STEP`, `3MF`, etc.).
+
+  ## 🚀 Novedades de la última actualización
+
+* 🇪🇸 Español
+Corrección en STEP e IGES: Ahora los formatos CAD neutrales exportan correctamente cada componente individual de forma independiente en lugar de repetir todo el ensamblaje.
+
+Nuevos campos (Sufijo y Fecha): Añade sufijos personalizados y fecha automática desde la interfaz.
+
+Optimización de velocidad: Creación global de carpetas para un proceso ultra rápido.
+
+🇬🇧 English
+STEP & IGES Fix: Neutral CAD formats now correctly export each individual component independently instead of duplicating the whole assembly.
+
+New fields (Suffix & Date): Add custom suffixes and automatic dates directly from the UI.
+
+Speed optimization: Global folder creation for a lightning-fast export process.
 ---
 <div align="center">
   <i>Developed by Ing. Rangel Díaz Savón | MODINGE</i>
